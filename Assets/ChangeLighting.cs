@@ -13,6 +13,27 @@ public class ChangeLighting : MonoBehaviour {
 	
 	}
 
+	// NON-RPC Change Fog effects when players move positions
+	public void IndependantChangeFog (float rawDensity) {
+		Debug.Log ("RawDensity: " + rawDensity);
+		float density = rawDensity / 1000f;
+		// MAX Fog Density 0.08u, Minimum 0.0u
+		if (density > 0.08f) {
+			RenderSettings.fog = true;
+			RenderSettings.fogDensity = 0.08f;
+			Debug.Log ("Changing fog to " + density);
+		}
+		if (density > 0.01) {
+			RenderSettings.fog = true;
+			RenderSettings.fogDensity = density;
+			Debug.Log ("Changing fog to " + density);
+		}
+		else {
+			RenderSettings.fog = false;
+			Debug.Log ("Disable Fog");
+		}
+	}
+
 	// Change Fog effects when the players move positions
 	[RPC]
 	public void ChangeFog (float rawDensity) {

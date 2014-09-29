@@ -5,6 +5,7 @@ public class NetworkManager : MonoBehaviour {
 
 	public GameObject standbyCamera;
 	public bool offlineMode = false;
+	public GameObject[] players;
 	SpawnSpot[] spawnSpots;
 
 	// Use this for initialization
@@ -51,6 +52,7 @@ public class NetworkManager : MonoBehaviour {
 
 		SpawnSpot mySpawnSpot = spawnSpots[ Random.Range (0, spawnSpots.Length) ];
 		GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("PlayerController", mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
+
 		standbyCamera.SetActive(false);
 
 		//((MonoBehaviour)myPlayerGO.GetComponent("FPSInputController")).enabled = true;
@@ -70,5 +72,11 @@ public class NetworkManager : MonoBehaviour {
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraRight").GetComponent<Camera>().enabled = true;
 		//((MonoBehaviour)myPlayerGO.transform.FindChild ("OVRCameraController").gameObject.transform.FindChild ("CameraLeft").GetComponent ("Camera")).enabled = true;
 		//myPlayerGO.transform.FindChild("Main Camera").gameObject.SetActive(true);
+
+		// Add player to players Array.
+		// Send RPC Call to ChangeLighting which adds players to an array?
+		Debug.Log (myPlayerGO.name);
+		players [0] = myPlayerGO;
+		Debug.Log ("We have " + players.Length + " players AT START");
 	}
 }
