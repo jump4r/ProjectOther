@@ -23,7 +23,7 @@ public class RandomAmbientSound : MonoBehaviour {
 		if (!audio.isPlaying) {
 			audio.clip = ambientClips[c];
 			audio.Play();
-			Debug.Log("Audio Clip " + c + " has played");
+			//Debug.Log("Audio Clip " + c + " has played");
 		}
 	}
 }

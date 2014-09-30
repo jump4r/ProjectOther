@@ -131,6 +131,7 @@ MonoBehaviour:
   offlineMode: 0
   players:
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114722344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793d3e731976e2243b27ba65a80af934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &258716960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1728,10 @@ Prefab:
     - target: {fileID: 100000, guid: b102dc665e5411d4eaa4b0de8d566f65, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b102dc665e5411d4eaa4b0de8d566f65, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b102dc665e5411d4eaa4b0de8d566f65, type: 2}

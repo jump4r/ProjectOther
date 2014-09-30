@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ChangeLighting : MonoBehaviour {
 
+	public GameObject[] players;
 	// Use this for initialization
 	void Start () {
 	
@@ -69,16 +70,11 @@ public class ChangeLighting : MonoBehaviour {
 		Debug.Log ("Changing Light to " + color);
 	}
 
-	[RPC]
-	public void ThirdFog(float c) {
-		if (c > 0) {
-			RenderSettings.fog = true;
-			RenderSettings.fogDensity = c;
-			Debug.Log ("Changing fog to " + c);
-		}
-		else {
-			RenderSettings.fog = false;
-			Debug.Log ("Disable Fog");
+	//[RPC]
+	public void UpdatePlayers() {
+		if (PhotonNetwork.playerList.Length == 2) {
+			players = GameObject.FindGameObjectsWithTag ("Player");
+			Debug.Log (players.Length + " players");
 		}
 	}
 }

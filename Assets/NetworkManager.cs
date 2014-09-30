@@ -29,17 +29,17 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	void OnJoinedLobby() {
-		Debug.Log ("OnJoinedLobby");
+		//Debug.Log ("OnJoinedLobby");
 		PhotonNetwork.JoinRandomRoom();
 	}
 
 	void OnPhotonRandomJoinFailed() {
-		Debug.Log ("OnPhotonRandomJoinFailed");
+		//Debug.Log ("OnPhotonRandomJoinFailed");
 		PhotonNetwork.CreateRoom( null );
 	}
 
 	void OnJoinedRoom() {
-		Debug.Log ("OnJoinedRoom");
+		//Debug.Log ("OnJoinedRoom");
 
 		SpawnMyPlayer();
 	}
@@ -70,13 +70,15 @@ public class NetworkManager : MonoBehaviour {
 		GameObject cc = myPlayerGO.transform.FindChild ("OVRCameraController").gameObject;
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraLeft").GetComponent<Camera>().enabled = true;
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraRight").GetComponent<Camera>().enabled = true;
-		//((MonoBehaviour)myPlayerGO.transform.FindChild ("OVRCameraController").gameObject.transform.FindChild ("CameraLeft").GetComponent ("Camera")).enabled = true;
-		//myPlayerGO.transform.FindChild("Main Camera").gameObject.SetActive(true);
 
 		// Add player to players Array.
 		// Send RPC Call to ChangeLighting which adds players to an array?
-		Debug.Log (myPlayerGO.name);
-		players [0] = myPlayerGO;
-		Debug.Log ("We have " + players.Length + " players AT START");
+		ChangeLighting cl = GameObject.FindGameObjectWithTag ("Scripts").GetComponent<ChangeLighting> ();
+		//cl.GetComponent<PhotonView>().RPC ("UpdatePlayers", PhotonTargets.All);
+		// Check to see if this is the master client
+		if (!PhotonNetwork.player.isMasterClient) { 
+			Debug.Log("This player is NOT the master client");
+			cl.UpdatePlayers ();
+		}
 	}
 }

@@ -27,4 +27,5 @@ MonoBehaviour:
   - ChangeFog
   - ChangeLight
   - ThirdFog
+  - UpdatePlayers
   DisableAutoOpenWizard: 0
