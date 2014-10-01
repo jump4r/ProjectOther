@@ -19,12 +19,12 @@ public class ChangeLighting : MonoBehaviour {
 		Debug.Log ("RawDensity: " + rawDensity);
 		float density = rawDensity / 1000f;
 		// MAX Fog Density 0.08u, Minimum 0.0u
-		if (density > 0.08f) {
+		if (density > 0.06f) {
 			RenderSettings.fog = true;
 			RenderSettings.fogDensity = 0.08f;
 			Debug.Log ("Changing fog to " + density);
 		}
-		if (density > 0.01) {
+		else if (density > 0.01) {
 			RenderSettings.fog = true;
 			RenderSettings.fogDensity = density;
 			Debug.Log ("Changing fog to " + density);
@@ -41,12 +41,12 @@ public class ChangeLighting : MonoBehaviour {
 		Debug.Log ("RawDensity: " + rawDensity);
 		float density = rawDensity / 1000f;
 		// MAX Fog Density 0.08u, Minimum 0.0u
-		if (density > 0.08f) {
+		if (density > 0.06f) {
 			RenderSettings.fog = true;
 			RenderSettings.fogDensity = 0.08f;
 			Debug.Log ("Changing fog to " + density);
 		}
-		if (density > 0.01) {
+		else if (density > 0.01) {
 			RenderSettings.fog = true;
 			RenderSettings.fogDensity = density;
 			Debug.Log ("Changing fog to " + density);
