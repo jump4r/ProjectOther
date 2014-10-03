@@ -6,11 +6,15 @@ public class NetworkManager : MonoBehaviour {
 	public GameObject standbyCamera;
 	public bool offlineMode = false;
 	public GameObject[] players;
+
+	// Update The List of Players
+	PlayerList pl;
 	SpawnSpot[] spawnSpots;
 
 	// Use this for initialization
 	void Start () {
 		spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
+		pl = GameObject.FindGameObjectWithTag ("Scripts").GetComponent<PlayerList> ();
 		Connect ();
 	}
 
@@ -73,12 +77,12 @@ public class NetworkManager : MonoBehaviour {
 
 		// Add player to players Array.
 		// Send RPC Call to ChangeLighting which adds players to an array?
-		ChangeLighting cl = GameObject.FindGameObjectWithTag ("Scripts").GetComponent<ChangeLighting> ();
+		//ChangeLighting cl = GameObject.FindGameObjectWithTag ("Scripts").GetComponent<ChangeLighting> ();
 		//cl.GetComponent<PhotonView>().RPC ("UpdatePlayers", PhotonTargets.All);
+		pl.GetComponent<PhotonView> ().RPC ("UpdatePlayers", PhotonTargets.AllBuffered);
 		// Check to see if this is the master client
 		if (!PhotonNetwork.player.isMasterClient) { 
 			Debug.Log("This player is NOT the master client");
-			cl.UpdatePlayers ();
 		}
 	}
 }
