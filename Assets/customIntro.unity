@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
+  timer: 1
 --- !u!1 &258716960
 GameObject:
   m_ObjectHideFlags: 0

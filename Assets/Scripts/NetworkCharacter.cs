@@ -14,11 +14,11 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	Vector3 vStore2;
 
 	// Change Lighting script
-	GameObject cl;
+	GameObject scripts;
 	GameObject tp;
 	// Use this for initialization
 	void Start () {
-		cl = GameObject.FindGameObjectWithTag("Scripts");
+		scripts = GameObject.FindGameObjectWithTag("Scripts");
 		// Temp Player for testing purposes
 		tp = GameObject.Find ("TempPlayer");
 		vStore1 = new Vector3(0f, 0f, 0f);
@@ -27,6 +27,8 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		// Update the other player's position in the world.
 		if( photonView.isMine ) {
 			// Do nothing -- the character motor/input/etc... is moving us
 		}
@@ -41,7 +43,8 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		// if (Vector3.Distance (vStore1, vStore2) > 50f) {
 		if (timer < 0f) {
 			timer = 1f;
-			ChangeLighting nl = cl.GetComponent<ChangeLighting> ();
+			ChangeLighting nl = scripts.GetComponent<ChangeLighting> ();
+			PlayerList pl = scripts.GetComponent<PlayerList>();
 
 			// Use temp player if in Offline mode
 			if (PhotonNetwork.playerList.Length < 2) {
@@ -63,10 +66,12 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 				Debug.Log("Other player is at  " + vStore2);
 				// Change Fog based off of Approriate Location
 				//GameObject.FindGameObjectWithTag("Scripts").GetComponent<ChangeLighting>().IndependantChangeFog(Vector3.Distance (vStore1, vStore2));
-				nl.GetComponent<PhotonView> ().RPC ("ChangeFog", PhotonTargets.Others, Vector3.Distance(vStore1, vStore2));
+				//nl.GetComponent<PhotonView> ().RPC ("ChangeFog", PhotonTargets.Others, Vector3.Distance(vStore1, vStore2));
+				pl.ChangeFog ();
 				// New Color for Ambient Light
-				Color c = new Color(RenderSettings.ambientLight.r - .05f, RenderSettings.ambientLight.g - .05f, RenderSettings.ambientLight.b - .05f, 1);
-				nl.GetComponent<PhotonView> ().RPC ("ChangeLight", PhotonTargets.All, c);
+				//Color c = new Color(RenderSettings.ambientLight.r - .05f, RenderSettings.ambientLight.g - .05f, RenderSettings.ambientLight.b - .05f, 1);
+				//nl.GetComponent<PhotonView> ().RPC ("ChangeLight", PhotonTargets.All, c);
+				pl.ChangeLighting ();
 			} 
 		}
 		timer -= Time.deltaTime;
