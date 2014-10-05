@@ -28,4 +28,6 @@ MonoBehaviour:
   - ChangeLight
   - ThirdFog
   - UpdatePlayers
+  - PlayFootstep
+  - PlayeNetworkStep
   DisableAutoOpenWizard: 0

@@ -4,7 +4,9 @@ using System.Collections;
 public class PlayerList : MonoBehaviour {
 
 	public GameObject[] players;
-	public float timer = 1f;
+	public GameObject myPlayer;
+	public AudioClip footstep;
+	private float timer = 1f;
 	// Use this for initialization
 	void Start () {
 	
@@ -60,5 +62,14 @@ public class PlayerList : MonoBehaviour {
 		Color color = new Color (0.45f - c, 0.45f - c, 0.45f - c, 1);
 		RenderSettings.ambientLight = color;
 		Debug.Log ("Changing Light to " + color);
+	}
+
+	[RPC]
+	public void PlayeNetworkStep() {
+		AudioSource.PlayClipAtPoint (footstep, myPlayer.transform.position);
+	}
+
+	public void PlayFootstep() {
+		AudioSource.PlayClipAtPoint (footstep, myPlayer.transform.position);
 	}
 }

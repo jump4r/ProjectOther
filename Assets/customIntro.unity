@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  timer: 1
+  myPlayer: {fileID: 0}
+  footstep: {fileID: 8300000, guid: 3f8cd28f952fc2349b104112f534fe95, type: 3}
 --- !u!1 &258716960
 GameObject:
   m_ObjectHideFlags: 0

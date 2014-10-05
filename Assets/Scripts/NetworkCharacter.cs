@@ -8,6 +8,7 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 
 	// Terrain/Setting timer
 	float timer = 3f;
+	float footstepReset = 1f;
 
 	// Storing Vectors to determine distance between the two players.
 	Vector3 vStore1;
@@ -16,6 +17,7 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	// Change Lighting script
 	GameObject scripts;
 	GameObject tp;
+	PlayerList pl;
 	// Use this for initialization
 	void Start () {
 		scripts = GameObject.FindGameObjectWithTag("Scripts");
@@ -23,6 +25,8 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		tp = GameObject.Find ("TempPlayer");
 		vStore1 = new Vector3(0f, 0f, 0f);
 		vStore2 = new Vector3(0f, 0f, 0f);
+
+		pl = scripts.GetComponent<PlayerList>();
 	}
 	
 	// Update is called once per frame
@@ -44,7 +48,6 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		if (timer < 0f) {
 			timer = 1f;
 			ChangeLighting nl = scripts.GetComponent<ChangeLighting> ();
-			PlayerList pl = scripts.GetComponent<PlayerList>();
 
 			// Use temp player if in Offline mode
 			if (PhotonNetwork.playerList.Length < 2) {
@@ -74,6 +77,15 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 				pl.ChangeLighting ();
 			} 
 		}
+
+		// Manage Footsteps. This is pretty sloppy but it'll work for now.
+		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && footstepReset < 0) {
+			pl.GetComponent<PhotonView>().RPC ("PlayNetworkStep", PhotonTargets.Others);
+			pl.PlayFootstep ();
+			footstepReset = .5f;
+		}
+
+		footstepReset -= Time.deltaTime;
 		timer -= Time.deltaTime;
 	}
 
@@ -91,7 +103,6 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 			// millisecond ago, and update our version of that player.
 
 			realPosition = (Vector3)stream.ReceiveNext();
-			//Debug.Log ("Other Players location is " + transform.position);
 			vStore2 = transform.FindChild ("OVRCameraController").transform.position;
 
 			realRotation = (Quaternion)stream.ReceiveNext();

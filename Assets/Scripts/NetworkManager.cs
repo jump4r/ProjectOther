@@ -80,6 +80,8 @@ public class NetworkManager : MonoBehaviour {
 		//ChangeLighting cl = GameObject.FindGameObjectWithTag ("Scripts").GetComponent<ChangeLighting> ();
 		//cl.GetComponent<PhotonView>().RPC ("UpdatePlayers", PhotonTargets.All);
 		pl.GetComponent<PhotonView> ().RPC ("UpdatePlayers", PhotonTargets.AllBuffered);
+		pl.myPlayer = myPlayerGO;
+
 		// Check to see if this is the master client
 		if (!PhotonNetwork.player.isMasterClient) { 
 			Debug.Log("This player is NOT the master client");
