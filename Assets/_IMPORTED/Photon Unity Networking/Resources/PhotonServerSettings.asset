@@ -30,4 +30,5 @@ MonoBehaviour:
   - UpdatePlayers
   - PlayFootstep
   - PlayeNetworkStep
+  - PlayNetworkStep
   DisableAutoOpenWizard: 0

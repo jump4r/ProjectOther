@@ -27,6 +27,13 @@ public class PlayerList : MonoBehaviour {
 		players = GameObject.FindGameObjectsWithTag ("Player");
 	}
 
+	// Play Footstep over the network so that other players can hear it.
+	[RPC]
+	public void PlayNetworkStep(Vector3 pos) {
+		AudioSource.PlayClipAtPoint (footstep, pos);
+		Debug.Log ("Other player footstep at " + pos);
+	}
+
 	// Change the Level of fog in the world based off of players position.
 	public void ChangeFog() {
 		if (players.Length < 2)
@@ -45,7 +52,7 @@ public class PlayerList : MonoBehaviour {
 		}
 		else {
 			RenderSettings.fog = false;
-			Debug.Log ("Disable Fog");
+			//Debug.Log ("Disable Fog");
 		}
 	}
 
@@ -61,12 +68,7 @@ public class PlayerList : MonoBehaviour {
 			c = 0.45f;
 		Color color = new Color (0.45f - c, 0.45f - c, 0.45f - c, 1);
 		RenderSettings.ambientLight = color;
-		Debug.Log ("Changing Light to " + color);
-	}
-
-	[RPC]
-	public void PlayeNetworkStep() {
-		AudioSource.PlayClipAtPoint (footstep, myPlayer.transform.position);
+		//Debug.Log ("Changing Light to " + color);
 	}
 
 	public void PlayFootstep() {

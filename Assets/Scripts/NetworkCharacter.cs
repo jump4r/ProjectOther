@@ -34,7 +34,12 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 
 		// Update the other player's position in the world.
 		if( photonView.isMine ) {
-			// Do nothing -- the character motor/input/etc... is moving us
+			// Manage Footsteps. This is pretty sloppy but it'll work for now.
+			if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && footstepReset < 0) {
+				pl.GetComponent<PhotonView>().RPC ("PlayNetworkStep", PhotonTargets.All, transform.position);
+				//pl.PlayFootstep ();
+				footstepReset = .5f;
+			}
 		}
 		else {
 			transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
@@ -65,8 +70,6 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 			else if (nl != null) {
 				Debug.Log ("We have " + PhotonNetwork.playerList.Length + " players");
 				Debug.DrawLine (vStore1, vStore2, Color.red, 1f);
-				Debug.Log("Our player is at position: " + vStore1);
-				Debug.Log("Other player is at  " + vStore2);
 				// Change Fog based off of Approriate Location
 				//GameObject.FindGameObjectWithTag("Scripts").GetComponent<ChangeLighting>().IndependantChangeFog(Vector3.Distance (vStore1, vStore2));
 				//nl.GetComponent<PhotonView> ().RPC ("ChangeFog", PhotonTargets.Others, Vector3.Distance(vStore1, vStore2));
@@ -78,12 +81,6 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 			} 
 		}
 
-		// Manage Footsteps. This is pretty sloppy but it'll work for now.
-		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && footstepReset < 0) {
-			pl.GetComponent<PhotonView>().RPC ("PlayNetworkStep", PhotonTargets.Others);
-			pl.PlayFootstep ();
-			footstepReset = .5f;
-		}
 
 		footstepReset -= Time.deltaTime;
 		timer -= Time.deltaTime;
