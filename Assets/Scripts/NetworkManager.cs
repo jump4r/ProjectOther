@@ -74,6 +74,7 @@ public class NetworkManager : MonoBehaviour {
 		GameObject cc = myPlayerGO.transform.FindChild ("OVRCameraController").gameObject;
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraLeft").GetComponent<Camera>().enabled = true;
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraRight").GetComponent<Camera>().enabled = true;
+		myPlayerGO.transform.FindChild("OVRCameraController").GetComponent<AudioListener> ().enabled = true;
 
 		// Add player to players Array.
 		// Send RPC Call to ChangeLighting which adds players to an array?
