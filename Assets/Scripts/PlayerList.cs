@@ -42,9 +42,9 @@ public class PlayerList : MonoBehaviour {
 		float normalizeDensity = 1000f;
 		float density = Vector3.Distance(players[0].transform.position, players[1].transform.position) / normalizeDensity;
 		// MAX Fog Density 0.08u, Minimum 0.0u
-		if (density > 0.06f) {
+		if (density > 0.04f) {
 			RenderSettings.fog = true;
-			RenderSettings.fogDensity = 0.08f;
+			RenderSettings.fogDensity = 0.04f;
 		}
 		else if (density > 0.01) {
 			RenderSettings.fog = true;

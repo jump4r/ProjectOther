@@ -32,6 +32,11 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		// Quit Game
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.Quit ();
+		}
+
 		// Update the other player's position in the world.
 		if( photonView.isMine ) {
 			// Manage Footsteps. This is pretty sloppy but it'll work for now.
