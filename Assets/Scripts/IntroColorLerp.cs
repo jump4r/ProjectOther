@@ -58,7 +58,6 @@ public class IntroColorLerp : MonoBehaviour {
 	// Hurray for unneeded funcitons.
 	void LerpColor(float color) {
 		RenderSettings.ambientLight = Color.Lerp (RenderSettings.ambientLight, new Color(color, color, color), lerpSpeed * Time.deltaTime);
-		Debug.Log ("Lerping Color to " + color);
-	
+		//Debug.Log ("Lerping Color to " + color);
 	}
 }
