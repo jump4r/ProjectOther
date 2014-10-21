@@ -56,7 +56,7 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 		//Debug.Log ("The Distance Between players is " + Vector3.Distance (vStore1, vStore2));
 		// if (Vector3.Distance (vStore1, vStore2) > 50f) {
 		if (timer < 0f) {
-			timer = 1f;
+			timer = .25f;
 			ChangeLighting nl = scripts.GetComponent<ChangeLighting> ();
 
 			// Use temp player if in Offline mode

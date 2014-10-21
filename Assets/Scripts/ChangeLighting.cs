@@ -40,9 +40,9 @@ public class ChangeLighting : MonoBehaviour {
 	public void ChangeFog (float rawDensity) {
 		float density = rawDensity / 1000f;
 		// MAX Fog Density 0.08u, Minimum 0.0u
-		if (density > 0.05f) {
+		if (density > 0.03f) {
 			RenderSettings.fog = true;
-			RenderSettings.fogDensity = 0.05f;
+			RenderSettings.fogDensity = 0.03f;
 		}
 		else if (density > 0.01) {
 			RenderSettings.fog = true;

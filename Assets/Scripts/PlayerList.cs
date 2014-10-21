@@ -36,10 +36,11 @@ public class PlayerList : MonoBehaviour {
 
 	// Change the Level of fog in the world based off of players position.
 	public void ChangeFog() {
+		Debug.Log ("Calling ChangeFog from PlayerList");
 		if (players.Length < 2)
 			return;
 
-		float normalizeDensity = 1000f;
+		float normalizeDensity = 2000f;
 		float density = Vector3.Distance(players[0].transform.position, players[1].transform.position) / normalizeDensity;
 		// MAX Fog Density 0.08u, Minimum 0.0u
 		if (density > 0.04f) {
