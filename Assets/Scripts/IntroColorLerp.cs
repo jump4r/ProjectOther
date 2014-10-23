@@ -27,7 +27,7 @@ public class IntroColorLerp : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Adding Input Cause Lazy
-		if (Input.anyKey) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			Application.LoadLevel (1);
 		}
 
