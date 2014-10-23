@@ -46,9 +46,18 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 				footstepReset = .5f;
 			}
 		}
+
+		// If this is another player, update their position and rotation. This is so you can watch them get mad money and bitches galore I'm so mad at Unity right now I feel the need to record my emotions.
 		else {
 			transform.position = Vector3.Lerp(transform.position, realPosition, 0.1f);
 			transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, 0.1f);
+
+			// Hack fix for a bug where the player will fall throught the floor
+			// But of course Unity decided that my liscence should literally expire right now, so I can't test this on 2 computers
+			if (transform.position.y < -15f) {
+				Debug.Log ("Character is below the -15 threshold, moving them up");
+				transform.position = new Vector3(transform.position.x, 20f, transform.position.z);
+			}
 			//Debug.Log (transform.position);
 		}
 		
