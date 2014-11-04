@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerList : MonoBehaviour {
+public class PlayerList : Photon.MonoBehaviour {
 
 	public GameObject[] players;
 	public GameObject myPlayer;
+
 	public AudioClip footstep;
+	
 	private float timer = 1f;
+
+	private bool interactableInstatiated = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -17,6 +21,15 @@ public class PlayerList : MonoBehaviour {
 		if (players.Length > 1) {
 			Debug.DrawLine (players[0].transform.position, players[1].transform.position, Color.green, 1f);
 			timer = 1f;
+
+			// If both players are in the game, instatiate the Interactable Objects
+			// We only want the objects instantiated once, really I should just have the master do it
+			 if (PhotonNetwork.player.isMasterClient && !interactableInstatiated) {
+				// Instatiate
+				Debug.Log ("Instantiating Interactable Objects");
+				GameObject.FindGameObjectWithTag("Scripts").GetComponent<CreateInteractable>().CreateObjects();
+				interactableInstatiated = true; 
+			} 
 		}
 		timer -= Time.deltaTime;
 	}
@@ -31,7 +44,7 @@ public class PlayerList : MonoBehaviour {
 	[RPC]
 	public void PlayNetworkStep(Vector3 pos) {
 		AudioSource.PlayClipAtPoint (footstep, pos);
-		Debug.Log ("Other player footstep at " + pos);
+		//Debug.Log ("Other player footstep at " + pos);
 	}
 
 	// Change the Level of fog in the world based off of players position.

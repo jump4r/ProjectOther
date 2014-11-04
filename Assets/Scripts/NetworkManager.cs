@@ -62,7 +62,7 @@ public class NetworkManager : MonoBehaviour {
 		//((MonoBehaviour)myPlayerGO.GetComponent("FPSInputController")).enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("MouseLook")).enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("CharacterMotor")).enabled = true;
-
+		myPlayerGO.GetComponent<PlayerSoundInput> ().enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("OVRPlayerController")).enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("OVRGamepadController")).enabled = true;
 
