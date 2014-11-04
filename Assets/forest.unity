@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standbyCamera: {fileID: 1949267084}
-  offlineMode: 0
+  offlineMode: 1
   players:
   - {fileID: 0}
   - {fileID: 0}
