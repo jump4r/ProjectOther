@@ -18,7 +18,7 @@ public class CreateInteractable : MonoBehaviour {
 		foreach (Vector3 v in objSpawnPos) {
 			Debug.Log ("Creating the objects");
 			int c = Random.Range(0, objPrefabNames.Length);
-			PhotonNetwork.Instantiate(objPrefabNames[1], v, Quaternion.identity, 0);
+			PhotonNetwork.Instantiate(objPrefabNames[c], v, Quaternion.identity, 0);
 		}
 	}
 }
