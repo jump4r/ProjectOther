@@ -15,7 +15,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: .166252151, g: .206351414, b: .301470578, a: 1}
   m_FogMode: 2
-  m_FogDensity: .0700000003
+  m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .477941155, g: .477941155, b: .477941155, a: 1}
@@ -673,6 +673,33 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &542784129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 542784130}
+  m_Layer: 0
+  m_Name: Ending Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542784130
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 542784129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.2905388, y: 68.0359497, z: -29.316925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1369445672}
+  m_RootOrder: 6
 --- !u!1001 &549521167
 Prefab:
   m_ObjectHideFlags: 0
@@ -1999,6 +2026,7 @@ Transform:
   - {fileID: 492559805}
   - {fileID: 1459456910}
   - {fileID: 1767613441}
+  - {fileID: 542784130}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &1423710971
@@ -2584,6 +2612,7 @@ GameObject:
   - 4: {fileID: 1767613441}
   - 82: {fileID: 1767613443}
   - 170: {fileID: 1767613442}
+  - 114: {fileID: 1767613444}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -2669,6 +2698,18 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1767613444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767613440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b19eea9030663846bb8db761b06edc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingSong: {fileID: 8300000, guid: 604288ea1c83ef446ae25fd2d0ce6afd, type: 3}
 --- !u!1 &1850476637
 GameObject:
   m_ObjectHideFlags: 0

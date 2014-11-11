@@ -3,40 +3,32 @@ using System.Collections;
 
 public class ScreenFade : MonoBehaviour {
 
-	public float fadeSpeed = 1.5f;
-	private bool sceneStarting = true;
+	public float fadeTime = 2.5f;
+	public GameObject cubeCurtain; // Jesus, this is a really hacky way to get around this. But i'm not sure how to fade the entire screent to black.
+	private bool fade = false;
+
 	// Use this for initialization
 	void Awake () {
-		guiTexture.pixelInset = new Rect (0f, 0f, Screen.width, Screen.height);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (sceneStarting) {
-			StartScene ();
+		if (fade) {
+			Color c = cubeCurtain.renderer.material.color;
+			float newAlpha = c.a + 0.005f;
+			c.a = newAlpha;
+			cubeCurtain.renderer.material.color = c;
 		}
 	}
 
-	void FadeToClear() {
-		guiTexture.color = Color.Lerp (guiTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
+	public void FadeScreen() {
+		cubeCurtain.GetComponent<MeshRenderer> ().enabled = true;
+		fade = true;
+		Invoke ("ChangeLevel", fadeTime); // Literally just discovered this function and it is great.
 	}
 
-	void FadeToBlack() {
-		guiTexture.color = Color.Lerp (guiTexture.color, Color.black, fadeSpeed * Time.deltaTime);
+	void ChangeLevel() {
+		Application.LoadLevel (2);
 	}
-
-	void StartScene() {
-		FadeToClear ();
-		if (guiTexture.color.a < 0.05f) {
-			guiTexture.color = Color.clear;
-			guiTexture.enabled = false;
-			sceneStarting = false;
-		}
-	}
-
-	void EndScene() {
-		guiTexture.enabled = true;
-		FadeToBlack ();
-	}
-
 }

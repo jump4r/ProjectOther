@@ -63,6 +63,7 @@ public class NetworkManager : MonoBehaviour {
 		((MonoBehaviour)myPlayerGO.GetComponent("MouseLook")).enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("CharacterMotor")).enabled = true;
 		myPlayerGO.GetComponent<PlayerSoundInput> ().enabled = true;
+		myPlayerGO.GetComponent<ScreenFade> ().enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("OVRPlayerController")).enabled = true;
 		((MonoBehaviour)myPlayerGO.GetComponent("OVRGamepadController")).enabled = true;
 
@@ -75,6 +76,7 @@ public class NetworkManager : MonoBehaviour {
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraLeft").GetComponent<Camera>().enabled = true;
 		myPlayerGO.transform.FindChild("OVRCameraController").gameObject.transform.FindChild ("CameraRight").GetComponent<Camera>().enabled = true;
 		myPlayerGO.transform.FindChild("OVRCameraController").GetComponent<AudioListener> ().enabled = true;
+
 
 		// Add player to players Array.
 		// Send RPC Call to ChangeLighting which adds players to an array?
