@@ -12,7 +12,7 @@ public class PlayerSoundInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Pressing 'f1' plays a sound.
-		if (Input.GetKeyDown (KeyCode.F1) && soundDelay < 0f) {
+		if (Input.GetKeyDown (KeyCode.CapsLock) && soundDelay < 0f) {
 			Debug.Log ("Instantiate New Sound Object");
 			PhotonNetwork.Instantiate ("PlayerSound", gameObject.transform.position, Quaternion.identity, 0);
 			soundDelay = 0.5f;
