@@ -18,10 +18,13 @@ public class PlaySoundFromPlayer : MonoBehaviour {
 		if (started && !audio.isPlaying && delayTimeToDestroy < 0f) {
 			// Destroy (gameObject);
 			// Only destroy from master player
+			/*
 			if (PhotonNetwork.player.isMasterClient) {
 				Debug.Log ("I am Master Client - Destroy Audio Object");
 				PhotonNetwork.Destroy (gameObject);
-			}
+			}*/
+			//Destroy (gameObject);
+			PhotonNetwork.Destroy(gameObject);
 		}
 
 		delayTimeToDestroy -= Time.deltaTime;
