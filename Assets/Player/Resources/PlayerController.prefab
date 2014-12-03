@@ -1422,7 +1422,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -.00785669778, z: 0, w: .999969184}
-  m_LocalPosition: {x: 18.7943726, y: -7.48985481, z: -23.7857666}
+  m_LocalPosition: {x: 35.906189, y: -8.37906551, z: .57409668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -1475,7 +1475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00450836169, y: 1.8139286, z: -.136000946}
+  m_LocalPosition: {x: -.00451053726, y: 1.29228306, z: -.0129312109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400012}
@@ -1502,7 +1502,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.90688297e-06, y: -.179229736, z: 2.98023224e-08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400008}
@@ -1924,8 +1924,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100084}
-  m_LocalRotation: {x: .00603508204, y: .0265671089, z: -.0430244207, w: .998702526}
-  m_LocalPosition: {x: .117043197, y: -.00487670908, z: -.00243839738}
+  m_LocalRotation: {x: -.206126422, y: .0911913663, z: -.64026159, w: .734344006}
+  m_LocalPosition: {x: .117043264, y: -.00487680035, z: -.00243832474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400076}
@@ -2455,8 +2455,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100170}
-  m_LocalRotation: {x: .00609316817, y: -.0264528822, z: .0457017981, w: .998586237}
-  m_LocalPosition: {x: -.117043197, y: -.00487670908, z: -.00243839738}
+  m_LocalRotation: {x: -.0106753139, y: -.0249583386, z: .625684857, w: .779603541}
+  m_LocalPosition: {x: -.117043637, y: -.00487694191, z: -.00243873801}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400158}
@@ -2932,7 +2932,7 @@ MonoBehaviour:
       m_PostInfinity: 2
     maxGroundAcceleration: 25
     maxAirAcceleration: 15
-    gravity: 20
+    gravity: 0
     maxFallSpeed: 20
   jumping:
     enabled: 1
@@ -2991,6 +2991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87cc2dc2c5535c4bbb4c1c8378d1b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fly: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3008,7 +3009,7 @@ MonoBehaviour:
   JumpForce: .300000012
   RotationAmount: 1.5
   RotationRatchet: 45
-  GravityModifier: .379000008
+  GravityModifier: .425000012
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1

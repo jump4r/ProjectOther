@@ -18,6 +18,9 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 	GameObject scripts;
 	GameObject tp;
 	PlayerList pl;
+
+	// Float player on ending
+	public bool fly = false;
 	// Use this for initialization
 	void Start () {
 		scripts = GameObject.FindGameObjectWithTag("Scripts");
@@ -44,6 +47,10 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 				pl.GetComponent<PhotonView>().RPC ("PlayNetworkStep", PhotonTargets.All, transform.position);
 				//pl.PlayFootstep ();
 				footstepReset = .5f;
+			}
+
+			if (fly) {
+				Fly();
 			}
 		}
 
@@ -119,5 +126,10 @@ public class NetworkCharacter : Photon.MonoBehaviour {
 			realRotation = (Quaternion)stream.ReceiveNext();
 		}
 
+	}
+
+	private void Fly() {
+		transform.position = new Vector3 (transform.position.x, transform.position.y + Time.deltaTime * 4f, transform.position.z);
+		Debug.Log ("Move Character Upwards, Fly towards the stars: " + transform.position);
 	}
 }

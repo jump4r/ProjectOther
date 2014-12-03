@@ -36,7 +36,11 @@ public class PlayBackgroundMusic : Photon.MonoBehaviour {
 			foreach (GameObject player in pl.players) {
 				if (player.GetComponent<ScreenFade>().enabled) {
 					player.GetComponent<ScreenFade>().FadeScreen ();
+					player.GetComponent<OVRPlayerController>().GravityModifier = 0;
+					//player.GetComponent<CharacterM
+					player.GetComponent<NetworkCharacter>().fly = true;
 				}
+				//endingPlaying = false;
 			}
 		}
 	}
